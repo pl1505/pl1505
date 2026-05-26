@@ -1,0 +1,497 @@
+/*111111111111111111111111111111111111
+<DataGrid x:Name="UsersDataGrid" ItemsSource="{Binding Users}" AutoGenerateColumns="False" IsReadOnly="True" Margin="10,45,28,28">
+    <DataGrid.Columns>
+        <DataGridTextColumn x:Name="LastName_info" Header="Фамилия" Binding="{Binding PersonalDetails.LastName}" Width="*"/>
+        <DataGridTextColumn x:Name="FirstName_info" Header="Имя" Binding="{Binding PersonalDetails.FirstName}" Width="*"/>
+        <DataGridTextColumn x:Name="MiddleName_info" Header="Отчество" Binding="{Binding PersonalDetails.MiddleName}" Width="*"/>
+        <DataGridTextColumn x:Name="Inn_info" Header="ИНН" Binding="{Binding PersonalDetails.INN}" Width="*"/>
+        <DataGridTextColumn x:Name="DateWelcome_info" Header="Дата рождения" Binding="{Binding PersonalDetails.DateOfBirth, StringFormat=d}" Width="*"/>
+        <DataGridTextColumn x:Name="Wallet_info" Header="Кошелек" Binding="{Binding PersonalDetails.Wallet}" Width="*"/>
+        <DataGridTextColumn x:Name="Snils_info" Header="СНИЛС" Binding="{Binding PersonalDetails.SNILS}" Width="*"/>
+        <DataGridTextColumn x:Name="PassportSeries_info" Header="Серия паспорта" Binding="{Binding PersonalDetails.PassportSeries}" Width="*"/>
+        <DataGridTextColumn x:Name="PassportNumber_info" Header="Номер паспорта" Binding="{Binding PersonalDetails.PassportNumber}" Width="*"/>
+        <DataGridTextColumn x:Name="Role_info" Header="Роль" Binding="{Binding Role.RoleName}" Width="*"/>
+    </DataGrid.Columns>
+</DataGrid>
+<Button Content="Выход" Click="Exit_Click" Margin="10,5,550,410"/>
+<Button Content="Вывести список" Click="Wawod_Click" Margin="271,5,289,410"/>
+<Button Content="Удалить список" Click="Delete_Click" Margin="532,5,28,410"/>
+   
+
+
+   {
+    public partial class AddUser : Page
+    {
+        public List<User> Users { get; set; }
+
+        public AddUser()
+        {
+            InitializeComponent();
+        }
+
+        private async void Wawod_Click(object sender, RoutedEventArgs e)
+        {
+            using (var db = new PersonalDetails()) // Замените YourDbContext на ваш класс контекста базы данных
+            {
+                try
+                {
+                    User33 = await db.User33
+                                    .Include(u => u.PersonalDetails)
+                                    .Include(u => u.Role)
+                                    .ToListAsync();
+
+                    DataContext = this;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}");
+                }
+            }
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
+}
+
+222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
+
+
+    {
+        public static user33Entities db = new user33Entities();
+        public static User CurrentUser { get; set; }
+    }
+}
+
+
+33333333333333333333333333333333333333333333333333333
+Background="Aqua">
+
+
+
+        <StackPanel HorizontalAlignment="Left" Height="284" Margin="256,69,0,0" VerticalAlignment="Top" Width="277">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF00B3FF"/>
+                    <GradientStop Color="#FF00FF79" Offset="1"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <TextBlock Height="41" TextWrapping="Wrap" Text="Меню Администратора" Width="266" Cursor="" FontSize="24"/>
+            <Button Content="Добавить Сотрудника" Margin="5" Height="35" Width="240" Click="Add_Click"/>
+            <Button Content="Добавить запись" Margin="5" Height="35" Width="240" Click="Button_Click"/>
+            <Button Content="Список студентов" Margin="5" Height="35" Width="240"  Click="Info_Click"/>
+            <Button Content="Редактирование записи" Margin="5" Height="35" Width="240" Click="Redact_Click"/>
+            <Button Content="Удалить запись" Margin="5" Height="35" Width="240"  Click="Delete_Click"/>
+
+        </StackPanel>
+
+
+
+
+
+
+    public partial class AdminPage : Page
+    {
+        public AdminPage()
+        {
+            InitializeComponent();
+           
+        }
+
+        private void Info_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddUser());
+        }
+
+      
+
+        private void Redact_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
+}
+
+
+4444444444444444444444444444444444444444444444444444444444444444444444444444444
+
+Margin="0,0,38,0">
+        <StackPanel HorizontalAlignment="Left" Height="432" Margin="86,10,0,0" VerticalAlignment="Top" Width="540">
+            <TextBlock Height="20" TextWrapping="Wrap" Width="336"  HorizontalAlignment="Center" VerticalAlignment="Center" Text="Login"/>
+            <TextBox x:Name="TxbLogin" Height="20" TextWrapping="Wrap" Width="336"/>
+            <TextBlock Height="20" TextWrapping="Wrap" Text="Password" Width="336"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:Name="TxbPassword" Height="20" TextWrapping="Wrap" Width="336"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Height="20" TextWrapping="Wrap" Width="336"  HorizontalAlignment="Center" VerticalAlignment="Center"><Run Language="ru-ru" Text="Имя"/></TextBlock>
+            <TextBox x:Name="Name_info" Height="20" TextWrapping="Wrap" Width="336"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Height="20" TextWrapping="Wrap" Width="336"  HorizontalAlignment="Center" VerticalAlignment="Center"><Run Language="ru-ru" Text="Фамилия"/></TextBlock>
+            <TextBox x:Name="Family_info" Height="20" TextWrapping="Wrap" Width="336"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Height="20" TextWrapping="Wrap" Width="336"  HorizontalAlignment="Center" VerticalAlignment="Center"><Run Language="ru-ru" Text="Отчество"/></TextBlock>
+            <DatePicker x:Name="DatePicker_info" Height="30" Width="336"/>
+            <TextBox x:Name="MiddleName_info" Height="20" TextWrapping="Wrap" Width="336"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Height="20" TextWrapping="Wrap" Width="336"  HorizontalAlignment="Center" VerticalAlignment="Center"><Run Language="ru-ru" Text="Инн"/></TextBlock>
+            <TextBox x:Name="Inn_info" Height="20" TextWrapping="Wrap" Width="336"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Height="20" TextWrapping="Wrap" Width="336"  HorizontalAlignment="Center" VerticalAlignment="Center"><Run Language="ru-ru" Text="Описание"/></TextBlock>
+            <TextBox x:Name="Description_Info" Height="20" TextWrapping="Wrap" Width="336"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Height="20" TextWrapping="Wrap" Text="Роль" Width="336"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ComboBox x:Name="CmbRole" Width="336" HorizontalAlignment="Center"
+                       DisplayMemberPath="Title"
+                       SelectedValuePath="ID">
+            </ComboBox>
+        </StackPanel>
+        <Button Content="Зарегестрироваться" Click ="BtnRegistr_Click" HorizontalAlignment="Left" Height="30" Margin="290,368,0,0" VerticalAlignment="Top" Width="132"/>
+        <Button Content="Войти" Click="BtnLogin_Click" HorizontalAlignment="Left" Height="29" Margin="290,398,0,0" VerticalAlignment="Top" Width="132"/>
+
+
+
+
+{
+    public partial class RegisterPage : Page
+    {
+        public RegisterPage()
+        {
+            InitializeComponent();
+            LoadRoles();
+        }
+        private void LoadRoles()
+        {
+            try
+            {
+                List<Role> roles = AppData.db.Role.ToList();
+                CmbRole.ItemsSource = roles;
+                CmbRole.DisplayMemberPath = "Title";   
+                CmbRole.SelectedValuePath = "ID";      
+                if (roles.Any()) 
+                {
+                    CmbRole.SelectedIndex = 1; 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при загрузке ролей: {ex.Message}");
+            }
+        }
+        private void BtnRegistr_Click(object sender, RoutedEventArgs e)
+        {
+            var existingUser = AppData.db.User
+                         .FirstOrDefault(u => u.Login == TxbLogin.Text.Trim());
+
+            if (existingUser != null)
+            {
+                MessageBox.Show("Пользователь с таким логином уже существует!");
+                return;
+            }
+
+           
+            if (CmbRole.SelectedValue is int roleId)
+            {
+                var newUser = new User
+                {
+                    Login = TxbLogin.Text.Trim(),
+                    Password = TxbPassword.Text,
+                    Name = Name_info.Text,
+                    FirstName = Family_info.Text,
+                    MiddleName = MiddleName_info.Text,
+                    Inn = Inn_info.Text,
+                    Description = Description_Info.Text,
+                    DatePicker = DatePicker_info.Text,
+                    RoleID = roleId 
+                };
+                AppData.db.User.Add(newUser);
+                AppData.db.SaveChanges();
+                MessageBox.Show("Регистрация успешна! Теперь вы можете войти.");
+            }
+            else
+            {
+                MessageBox.Show("Выберите роль для пользователя.");
+            }
+
+        }
+
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new SignlnPage());
+            
+        }
+    }
+}
+55555555555555555555555555555555555555555555555555555555555555555
+
+ VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="84*"/>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Left" Height="238" Margin="-29,14,0,0" VerticalAlignment="Top" Width="558" Grid.Row="2">
+            <TextBlock Height="20" TextWrapping="Wrap" Width="336"  HorizontalAlignment="Center" VerticalAlignment="Center" Text="Login"/>
+            <TextBox x:Name="TxbLogin" Height="20" TextWrapping="Wrap" Width="336"/>
+            <TextBlock Height="20" TextWrapping="Wrap" Text="Password" Width="336"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:Name="TxbPassword" Height="20" TextWrapping="Wrap" Width="336"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+        </StackPanel>
+        <Button Content="Войти" Click ="BtnSignIn_Click" HorizontalAlignment="Left" Height="30" Margin="190,103,0,0" VerticalAlignment="Top" Width="96" Grid.Row="2"/>
+        <Button Content="Регистрация" Click="BtnRegistr_Click" HorizontalAlignment="Left" Height="30" Margin="190,138,0,0" Grid.RowSpan="3" VerticalAlignment="Top" Width="96" />
+
+
+
+{
+    public partial class SignlnPage : Page
+    {
+
+        public SignlnPage()
+        {
+            InitializeComponent();
+
+        } 
+
+        private void BtnSignIn_Click(object sender, RoutedEventArgs e)
+        {
+
+            var CurrentUser = AppData.db.User.FirstOrDefault(u => u.Login == TxbLogin.Text && u.Password == TxbPassword.Text);
+            AppData.CurrentUser = CurrentUser;
+            if (CurrentUser == null) 
+            {
+                
+                MessageBox.Show("Такого пользователя нет в базе данных");
+
+            }
+            else
+            {
+                switch (CurrentUser.RoleID)
+                {
+                    case 1:
+                        NavigationService.Navigate(new AdminPage());
+                        break;
+                    case 2:
+                        NavigationService.Navigate(new WelcomePage());
+                        break;
+                    case 3:
+                        NavigationService.Navigate(new SotrudnikPage());
+                        break;
+                }
+            }
+        }
+
+        private void BtnRegistr_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RegisterPage());
+        }
+    }
+}
+
+
+666666666666666666666666666666666666666666666666666666666666666666666
+
+ <StackPanel HorizontalAlignment="Center" Height="293" Margin="0,98,0,0" VerticalAlignment="Top" Width="318">
+     <StackPanel.Background>
+         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+             <GradientStop Color="#FFE6FF00"/>
+             <GradientStop Color="#FF00FFED" Offset="1"/>
+         </LinearGradientBrush>
+     </StackPanel.Background>
+     <TextBlock Height="41" TextWrapping="Wrap" Width="211" Cursor="" FontSize="24"><Run Language="ru-ru" Text="Меню Сотрудника"/></TextBlock>
+     <Button Content="Добавить Товар" Margin="5" Height="35" Width="240"/>
+     <Button Content="Оформить заказ" Margin="5" Height="35" Width="240"/>
+     <Button Content="Принятие машины" Margin="5" Height="35" Width="240"/>
+     <Button Content="Электронная подпись" Margin="5" Height="35" Width="240"/>
+     <Button Content="Документы" Margin="5" Height="35" Width="240"/>
+
+ </StackPanel>
+
+
+7777777777777777777777777777777777777777777777777777777777777777777777
+
+ <TextBlock HorizontalAlignment="Center" Height="39" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="262" FontSize="24" Text="Аккаунт пользователя"/>
+ <StackPanel HorizontalAlignment="Left" Height="344" Margin="211,70,0,0" VerticalAlignment="Top" Width="334" RenderTransformOrigin="0.488,0.501">
+     <TextBlock x:Name="Login_info" Height="30" Margin="5" TextWrapping="Wrap" Width="170" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Language="ru-ru" Text="Логин"/><Run Text=":"/></TextBlock>
+     <TextBlock x:Name="Password_info" Height="30" Margin="5" TextWrapping="Wrap" Width="170" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Language="ru-ru" Text="Пароль"/><Run Text=":"/></TextBlock>
+     <TextBlock x:Name="Name_info" Height="30" Margin="5" TextWrapping="Wrap" Width="170" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Language="ru-ru" Text="Имя"/><Run Text=":"/></TextBlock>
+     <TextBlock x:Name="Family_Info" Height="30" Margin="5" TextWrapping="Wrap" Width="170" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Language="ru-ru" Text="Фамилия"/><Run Text=":"/></TextBlock>
+     <TextBlock x:Name="MiddleName_info" Height="30" Margin="5" TextWrapping="Wrap" Width="170" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Language="ru-ru" Text="Отчество"/><Run Text=":"/></TextBlock>
+     <TextBlock x:Name="DatePicker_info" Height="30" Margin="5" TextWrapping="Wrap" Width="170" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Language="ru-ru" Text="Отчество"/><Run Text=":"/></TextBlock>
+     <TextBlock x:Name="Inn_info" Height="30" Margin="5" TextWrapping="Wrap" Width="170" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Language="ru-ru" Text="Инн"/><Run Text=":"/></TextBlock>
+     <TextBlock x:Name="Description_Info" Height="30" Margin="5" TextWrapping="Wrap" Width="170" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Language="ru-ru" Text="Описание"/><Run Text=":"/></TextBlock>
+ </StackPanel>
+/*
+
+{
+    /// <summary>
+    /// Логика взаимодействия для WelcomePage.xaml
+    /// </summary>
+    public partial class WelcomePage : Page
+    {
+        public WelcomePage()
+        {
+            InitializeComponent();
+            LoadUserData();
+        }
+        private void LoadUserData()
+        {
+            Login_info.Text = AppData.CurrentUser.Login;
+            Password_info.Text = AppData.CurrentUser.Password;
+            Name_info.Text = AppData.CurrentUser.Name;
+            Family_Info.Text = AppData.CurrentUser.FirstName;
+            MiddleName_info.Text = AppData.CurrentUser.MiddleName; 
+            Inn_info.Text = AppData.CurrentUser.Inn;
+            Description_Info.Text = AppData.CurrentUser.Description;
+            DatePicker_info.Text = AppData.CurrentUser.DatePicker;
+
+
+        }
+
+    }
+}
+*/
+
+
+
+/*
+
+-- Удаление таблиц, если они существуют, чтобы можно было повторно выполнить скрипт
+IF OBJECT_ID('dbo.Orders', 'U') IS NOT NULL DROP TABLE dbo.Orders;
+GO
+IF OBJECT_ID('dbo.Trucks', 'U') IS NOT NULL DROP TABLE dbo.Trucks;
+GO
+
+-- 1. Создание таблицы Грузовиков (Trucks)
+CREATE TABLE Trucks (
+    TruckID INT PRIMARY KEY IDENTITY(1,1), -- Первичный ключ, автоинкремент
+    Model NVARCHAR(255) NOT NULL,
+    LicensePlate NVARCHAR(20) NOT NULL UNIQUE -- Номерной знак уникален
+);
+GO
+
+-- 2. Создание таблицы Заказов (Orders)
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY IDENTITY(1,1), -- Первичный ключ, автоинкремент
+    ClientName NVARCHAR(255) NOT NULL,
+    OrderNumber NVARCHAR(50) NOT NULL,
+    DeparturePoint NVARCHAR(100),
+    DeliveryPoint NVARCHAR(100),
+    DeliveryDate DATE,
+    PaymentDate DATE,
+    OrderSum DECIMAL(18, 2),
+
+    -- Внешний ключ для связи с таблицей Trucks
+    TruckID INT NULL, -- NULL означает, что грузовик еще не назначен
+
+    -- Определение внешнего ключа
+    -- FK_Orders_Trucks - это имя ограничения внешнего ключа
+    CONSTRAINT FK_Orders_Trucks
+        FOREIGN KEY (TruckID) -- Столбец в таблице Orders, который будет внешним ключом
+        REFERENCES Trucks(TruckID) -- Ссылка на столбец TruckID в таблице Trucks
+        ON DELETE SET NULL -- Если грузовик будет удален, TruckID в заказе станет NULL
+        ON UPDATE CASCADE -- Если TruckID в Trucks изменится, он обновится и здесь
+);
+GO
+
+
+-- === Вставка данных (как в предыдущих примерах) ===
+
+-- Вставка данных в таблицу Trucks
+INSERT INTO Trucks (Model, LicensePlate) VALUES
+('ГАЗ-33104 "Валдай" (Д-245.7Е2-4L-4,75-117-5М)', 'м324ст797'),
+('ГАЗ-33104 "Валдай" (Д-245.7Е2-4L-4,75-117-5М)', 'е434ка126'),
+('ГАЗ-33104 "Валдай" (Д-245.7Е2-4L-4,75-117-5М)', 'у831ое77'),
+('ГАЗ-33104 "Валдай" (Д-245.7Е2-4L-4,75-117-5М)', 'с452оо161'),
+('ГАЗ-33104 "Валдай" (Д-245.7Е2-4L-4,75-117-5М)', 'м674то97'),
+('КамАЗ-53212 (ЯМЗ-238Ф-8V-14,86-320-5М)', 'е592оу777'),
+('КамАЗ-53212 (ЯМЗ-238Ф-8V-14,86-320-5М)', 'о553вс23'),
+('КамАЗ-53212 (ЯМЗ-238Ф-8V-14,86-320-5М)', 'о444ту61'),
+('КамАЗ-53212 (ЯМЗ-238Ф-8V-14,86-320-5М)', 'с591ут97'),
+('КамАЗ-53212 (ЯМЗ-238Ф-8V-14,86-320-5М)', 'в667см95'),
+('КамАЗ-53212 (ЯМЗ-238Ф-8V-14,86-320-5М)', 'в569оо777'),
+('КамАЗ-53215N (КамАЗ-740.13-8V-10,85-260-10М)', 'с231оо116'),
+('КамАЗ-53215N (КамАЗ-740.13-8V-10,85-260-10М)', 'в583ее77'),
+('КамАЗ-53215N (КамАЗ-740.13-8V-10,85-260-10М)', 'о454вс77'),
+('КамАЗ-53215N (КамАЗ-740.13-8V-10,85-260-10М)', 'е982то97'),
+('МАЗ-53366 (ЯМЗ-238М2-8V-14,86-240-5М)', 'е337ео777'),
+('МАЗ-53366 (ЯМЗ-238М2-8V-14,86-240-5М)', 'о123оу23'),
+('МАЗ-53366 (ЯМЗ-238М2-8V-14,86-240-5М)', 'о093оо97'),
+('МАЗ-53366 (ЯМЗ-238М2-8V-14,86-240-5М)', 'е772ое190'),
+('МАЗ-53366 (ЯМЗ-238М2-8V-14,86-240-5М)', 'о438вм97'),
+('МАЗ-63171 (ТМЗ-8421-8V-17,26-360-9М)', 'о127ум97'),
+('МАЗ-63171 (ТМЗ-8421-8V-17,26-360-9М)', 'в673со77'),
+('МАЗ-63171 (ТМЗ-8421-8V-17,26-360-9М)', 'е654аа123'),
+('МАЗ-63171 (ТМЗ-8421-8V-17,26-360-9М)', 'а676ут09'),
+('МАЗ-63171 (ТМЗ-8421-8V-17,26-360-9М)', 'т444от777');
+GO
+
+-- Вставка данных в таблицу Orders (без назначения TruckID на этапе создания)
+INSERT INTO Orders (ClientName, OrderNumber, DeparturePoint, DeliveryPoint, DeliveryDate, PaymentDate, OrderSum) VALUES
+('Александров Петр Константинович', 'Заказ_4578_234', 'Москва', 'Саранск', '2025-02-02', '2025-02-14', 34200.00),
+('Бахшиев Павел Иннокентьевич', 'Заказ_2487_198', 'Рязань', 'Ужгород', '2025-03-25', '2025-02-24', 12600.00),
+('Мазалова Ольга Николаевна', '4578_247', 'Пермь', 'Москва', '2025-04-14', '2025-02-24', 37000.00),
+('Шевченко Ольга Викторовна', '4578_259', 'Москва', 'Томск', '2025-03-10', '2025-02-24', 7000.00),
+('Масюк Динара Викторовна', '4548_255', 'Калуга', 'Саратов', '2025-04-22', '2025-02-25', 122000.00),
+('Бунин Эдуард Михайлович', '4614_238', 'Тверь', 'Уфа', '2025-02-27', NULL, NULL),
+('Любяшева Галина Аркадьевна', '5172_252', 'Москва', 'Казань', '2025-04-02', '2025-02-27', 5000.00),
+('Гусев Семен Петрович', '4442_228', 'Уфа', 'Кисловодск', '2025-03-04', '2025-03-01', 12000.00),
+('Савельев Олег Иванович', '2836_199', 'Кострома', 'Ростов', '2025-03-09', '2025-03-01', 66000.00),
+('Захарящев Денис Сергеевич', '3232_242', 'Белгород', 'Краснодар', '2025-03-07', '2025-03-04', 50400.00),
+('Лапшин Виктор Романович', '5112_273', 'Уфа', 'Казань', '2025-03-04', '2025-03-04', 25200.00),
+('Минеева Галина Валерьевна', '6237_250', 'Сочи', 'Ставрополь', '2025-03-02', '2025-03-04', 47000.00),
+('Смирнова Дарья Андреевна', '5173_199', 'Москва', 'Кострома', '2025-03-05', NULL, NULL),
+('Третьяк Ярослава Викторовна', '4233_186', 'Ярославль', 'Ростов', '2025-03-17', '2025-03-06', 16000.00),
+('Мартыненко Александр Сергеевич', '3522_248', 'Казань', 'Нижний Новгород', '2025-03-19', '2025-03-19', 1600.00),
+('Антоненко Дмитрий Игоревич', '6671_242', 'Санкт-Петербург', 'Москва', '2025-03-04', '2025-03-21', 26000.00),
+('Лукин Илья Федорович', '7001_218', 'Пятигорск', 'Казань', '2025-03-22', '2025-03-25', 24200.00),
+('Мазалова Ирина Львовна', '3514_299', 'Москва', 'Санкт-Петербург', '2025-03-28', NULL, NULL),
+('Михайлов Игорь Вадимович', '4578_221', 'Уфа', 'Калуга', '2025-03-28', NULL, NULL),
+('Габиец Игорь Леонидович', '4471_239', 'Ростов', 'Москва', '2025-03-07', '2025-03-29', 21500.00),
+('Петров Станислав Игоревич', '3232_253', 'Волгоград', 'Смоленск', '2025-04-03', '2025-03-30', 2520.00),
+('Смирнов Михаил Юрьевич', '4716_254', 'Москва', 'Томск', '2025-03-08', '2025-03-30', 10800.00),
+('Байчорова Агата Рустамовна', '3991_234', 'Кострома', 'Сочи', '2025-04-06', '2025-04-01', 100000.00),
+('Гусев Семен Петрович', '2667_240', 'Владикавказ', 'Уфа', '2025-05-02', '2025-04-02', 8000.00),
+('Черненко Никита Алексеевич', '7788_258', 'Москва', 'Сочи', '2025-04-19', '2025-04-15', 22000.00),
+('Устьянцева Анна Станиславовна', '4877_257', 'Воронеж', 'Казань', '2025-03-02', '2025-04-17', 50000.00);
+GO
+
+
+-- === Пример назначения грузовика заказу ===
+-- Найдем TruckID для конкретного грузовика, например, КамАЗ с номером 'е592оу777'
+DECLARE @KamzTruckID INT;
+SELECT @KamzTruckID = TruckID FROM Trucks WHERE LicensePlate = 'е592оу777';
+
+-- Назначаем найденный TruckID второму заказу (OrderID = 2)
+UPDATE Orders
+SET TruckID = @KamzTruckID
+WHERE OrderID = 2; -- Заказ "Бахшиев Павел Иннокентьевич"
+
+-- Назначаем TruckID = 1 (первому грузовику в таблице Trucks) первому заказу
+UPDATE Orders
+SET TruckID = 1
+WHERE OrderID = 1; -- Заказ "Александров Петр Константинович"
+
+-- Назначаем TruckID = 6 (шестому грузовику в таблице Trucks) третьему заказу
+UPDATE Orders
+SET TruckID = 6
+WHERE OrderID = 3; -- Заказ "Мазалова Ольга Николаевна"
+
+-- Вывод таблиц для демонстрации
+SELECT * FROM Trucks;
+SELECT * FROM Orders;
+GO
+*/
